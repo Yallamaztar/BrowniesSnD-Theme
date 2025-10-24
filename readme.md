@@ -1,4 +1,4 @@
-![http://152.53.132.41:1624](https://github.com/Yallamaztar/iw4m/raw/master/assets/brownie.png)
+![http://152.53.132.41:1624](./ignore_me.png)
 *Hop on brownies :)*
 
 # Brownies Pack – Cyan / Light Blue Theme for Plutonium T6MP
