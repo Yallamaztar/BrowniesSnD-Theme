@@ -16,7 +16,7 @@ No .iwd mod required — just **drag and drop** or use the included installer:
      ```
      %LOCALAPPDATA%\Plutonium\storage\t6\images
      ```  
-   - Copy the contents of the `raw` folder to:  
+   - Copy the contents of the `raw` folder to (not suggested):  
      ```
      %LOCALAPPDATA%\Plutonium\storage\t6\raw
      ```  
