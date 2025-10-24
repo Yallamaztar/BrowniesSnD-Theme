@@ -188,7 +188,7 @@ LUI.createMenu.MainMenu = function (LocalClientIndex)
 	})
 	MainMenuWidget:addElement(MainMenuWidget.buttonList)
 	MainMenuWidget.mainLobbyButton = MainMenuWidget.buttonList:addButton(Engine.Localize("PLATFORM_XBOXLIVE_INSTR"), nil, 1)
-	MainMenuWidget.mainLobbyButton:setActionEventName("open_custom_games_lobby")
+	MainMenuWidget.mainLobbyButton:setActionEventName("open_main_lobby_requested")
 	local ShowServerBrowser
 	if not CoD.isPC or Dvar.developer:get() > 0 then
 		ShowServerBrowser = not Engine.IsBetaBuild()
@@ -222,10 +222,15 @@ LUI.createMenu.MainMenu = function (LocalClientIndex)
 	end
 	if CoD.isPC then
 		MainMenuWidget.buttonList:addSpacer(CoD.CoD9Button.Height / 2, 5)
-		--MainMenuWidget.unlockButton = MainMenuWidget.buttonList:addButton(Engine.Localize("LEVELS MENU"), nil, 6)
-		--MainMenuWidget.unlockButton:setActionEventName("open_levels_menu")
-		MainMenuWidget.modsButton = MainMenuWidget.buttonList:addButton(Engine.Localize("MODS"), nil, 6)
-		MainMenuWidget.modsButton:setActionEventName("open_mods_menu")
+		MainMenuWidget.spButton = MainMenuWidget.buttonList:addButton(Engine.Localize("MENU_SINGLEPLAYER_CAPS"), nil, 6)
+		MainMenuWidget.spButton:setActionEventName("open_sp_switch_popup")
+		if CoD.isZombie then
+			MainMenuWidget.mpButton = MainMenuWidget.buttonList:addButton(Engine.Localize("MENU_MULTIPLAYER_CAPS"), nil, 7)
+			MainMenuWidget.mpButton:setActionEventName("open_mp_switch_popup")
+		else
+			MainMenuWidget.zombieButton = MainMenuWidget.buttonList:addButton(Engine.Localize("MENU_ZOMBIE_CAPS"), nil, 7)
+			MainMenuWidget.zombieButton:setActionEventName("open_zm_switch_popup")
+		end
 		MainMenuWidget.buttonList:addSpacer(CoD.CoD9Button.Height / 2, 8)
 		MainMenuWidget.quitButton = MainMenuWidget.buttonList:addButton(Engine.Localize("MENU_QUIT_CAPS"), nil, 9)
 		MainMenuWidget.quitButton:setActionEventName("open_quit_popup")

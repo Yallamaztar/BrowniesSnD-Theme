@@ -387,51 +387,61 @@ CoD.MainLobby.UpdateButtonPromptVisibility = function (MainLobbyWidget)
 	MainLobbyWidget:addNATType()
 end
 
-CoD.MainLobby.PopulateButtons_Multiplayer = function (MainLobbyButtonPane)
-	MainLobbyButtonPane.body.serverBrowserButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("SERVER BROWSER"), nil, 1)
-	MainLobbyButtonPane.body.serverBrowserButton.hintText = Engine.Localize(CoD.MPZM("MPUI_PLAYER_MATCH_DESC", "ZMUI_PLAYER_MATCH_DESC"))
-	MainLobbyButtonPane.body.serverBrowserButton:setActionEventName("open_server_browser_mainlobby")
-	CoD.SetupMatchmakingLock(MainLobbyButtonPane.body.serverBrowserButton)
+CoD.MainLobby.PopulateButtons_Multiplayer = function (f19_arg0)
 	if Engine.IsBetaBuild() then
-		MainLobbyButtonPane.body.matchmakingButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_MATCHMAKING_CAPS"), nil, 3)
-		--MainLobbyButtonPane.body.leaguePlayButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_LEAGUE_PLAY_CAPS"), nil, 2)
+		f19_arg0.body.matchmakingButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_MATCHMAKING_CAPS"), nil, 2)
+		f19_arg0.body.leaguePlayButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_LEAGUE_PLAY_CAPS"), nil, 1)
 	else
-		MainLobbyButtonPane.body.matchmakingButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_MATCHMAKING_CAPS"), nil, 2)
-		--MainLobbyButtonPane.body.leaguePlayButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_LEAGUE_PLAY_CAPS"), nil, 3)
+		f19_arg0.body.matchmakingButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_MATCHMAKING_CAPS"), nil, 1)
+		f19_arg0.body.leaguePlayButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_LEAGUE_PLAY_CAPS"), nil, 2)
 	end
-	MainLobbyButtonPane.body.matchmakingButton.hintText = Engine.Localize(CoD.MPZM("MPUI_PLAYER_MATCH_DESC", "ZMUI_PLAYER_MATCH_DESC"))
-	MainLobbyButtonPane.body.matchmakingButton:setActionEventName("open_player_match_party_lobby")
-	CoD.SetupMatchmakingLock(MainLobbyButtonPane.body.matchmakingButton)
-	--MainLobbyButtonPane.body.leaguePlayButton.hintText = Engine.Localize("MPUI_LEAGUE_PLAY_DESC")
-	--MainLobbyButtonPane.body.leaguePlayButton:setActionEventName("open_league_play_party_lobby")
+	f19_arg0.body.matchmakingButton.hintText = Engine.Localize(CoD.MPZM("MPUI_PLAYER_MATCH_DESC", "ZMUI_PLAYER_MATCH_DESC"))
+	f19_arg0.body.matchmakingButton:setActionEventName("open_player_match_party_lobby")
+	CoD.SetupMatchmakingLock(f19_arg0.body.matchmakingButton)
+	f19_arg0.body.leaguePlayButton.hintText = Engine.Localize("MPUI_LEAGUE_PLAY_DESC")
+	f19_arg0.body.leaguePlayButton:setActionEventName("open_league_play_party_lobby")
 	if not Engine.IsBetaBuild() then
-		MainLobbyButtonPane.body.customGamesButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_CUSTOMGAMES_CAPS"), nil, 4)
-		MainLobbyButtonPane.body.customGamesButton.hintText = Engine.Localize(CoD.MPZM("MPUI_CUSTOM_MATCH_DESC", "ZMUI_CUSTOM_MATCH_DESC"))
-		MainLobbyButtonPane.body.customGamesButton:setActionEventName("open_custom_games_lobby")
-		CoD.SetupCustomGamesLock(MainLobbyButtonPane.body.customGamesButton)
+		f19_arg0.body.customGamesButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_CUSTOMGAMES_CAPS"), nil, 3)
+		f19_arg0.body.customGamesButton.hintText = Engine.Localize(CoD.MPZM("MPUI_CUSTOM_MATCH_DESC", "ZMUI_CUSTOM_MATCH_DESC"))
+		f19_arg0.body.customGamesButton:setActionEventName("open_custom_games_lobby")
+		CoD.SetupCustomGamesLock(f19_arg0.body.customGamesButton)
 	end
-	MainLobbyButtonPane.body.theaterButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_THEATER_CAPS"), nil, 5)
-	MainLobbyButtonPane.body.theaterButton:setActionEventName("open_theater_lobby")
-	MainLobbyButtonPane.body.theaterButton.hintText = Engine.Localize(CoD.MPZM("MPUI_THEATER_DESC", "ZMUI_THEATER_DESC"))
-	MainLobbyButtonPane.body.postTheaterSpacer = MainLobbyButtonPane.body.buttonList:addSpacer(CoD.CoD9Button.Height / 2, 6)
+	f19_arg0.body.theaterButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_THEATER_CAPS"), nil, 4)
+	f19_arg0.body.theaterButton:setActionEventName("open_theater_lobby")
+	f19_arg0.body.theaterButton.hintText = Engine.Localize(CoD.MPZM("MPUI_THEATER_DESC", "ZMUI_THEATER_DESC"))
+	f19_arg0.body.postTheaterSpacer = f19_arg0.body.buttonList:addSpacer(CoD.CoD9Button.Height / 2, 5)
+	if Engine.IsBetaBuild() then
+		f19_arg0.body.codtvButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_FILESHARE_COMMUNITY_CAPS"), nil, 6)
+	else
+		f19_arg0.body.codtvButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_COD_TV_CAPS"), nil, 6)
+	end
+	f19_arg0.body.codtvButton.hintText = Engine.Localize("MPUI_COD_TV_DESC")
+	f19_arg0.body.codtvButton:setActionEventName("open_cod_tv")
 	if not Engine.IsBetaBuild() then
-		MainLobbyButtonPane.body.barracksButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_BARRACKS_CAPS"), nil, 7)
-		MainLobbyButtonPane.body.barracksButton.id = "CoD9Button" .. "." .. "MainLobby" .. "." .. Engine.Localize("MENU_BARRACKS_CAPS")
-		CoD.SetupBarracksLock(MainLobbyButtonPane.body.barracksButton)
-		CoD.SetupBarracksNew(MainLobbyButtonPane.body.barracksButton)
-		MainLobbyButtonPane.body.barracksButton:setActionEventName("open_barracks")
+		f19_arg0.body.barracksButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_BARRACKS_CAPS"), nil, 7)
+		f19_arg0.body.barracksButton.id = "CoD9Button" .. "." .. "MainLobby" .. "." .. Engine.Localize("MENU_BARRACKS_CAPS")
+		CoD.SetupBarracksLock(f19_arg0.body.barracksButton)
+		CoD.SetupBarracksNew(f19_arg0.body.barracksButton)
+		f19_arg0.body.barracksButton:setActionEventName("open_barracks")
 	end
 	if CoD.isZombie == false and not Engine.IsBetaBuild() and (CoD.isXBOX or CoD.isPS3) and Engine.IsEliteAvailable() and Engine.IsEliteButtonAvailable() then
-		MainLobbyButtonPane.body.eliteAppButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_ELITE_CAPS"), nil, 8)
-		MainLobbyButtonPane.body.eliteAppButton.hintText = Engine.Localize("MENU_ELITE_DESC")
-		MainLobbyButtonPane.body.eliteAppButton:setActionEventName("open_eliteapp_popup")
+		f19_arg0.body.eliteAppButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_ELITE_CAPS"), nil, 8)
+		f19_arg0.body.eliteAppButton.hintText = Engine.Localize("MENU_ELITE_DESC")
+		f19_arg0.body.eliteAppButton:setActionEventName("open_eliteapp_popup")
 	end
-	MainLobbyButtonPane.body.buttonList:addSpacer(CoD.CoD9Button.Height / 2, 9)
-	MainLobbyButtonPane.body.optionsButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_OPTIONS_CAPS"), nil, 11)
-	MainLobbyButtonPane.body.optionsButton.hintText = Engine.Localize("MPUI_OPTIONS_DESC")
-	MainLobbyButtonPane.body.optionsButton:setActionEventName("open_options_menu")
-	MainLobbyButtonPane.body.modsButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MODS"), nil, 12)
-	MainLobbyButtonPane.body.modsButton:setActionEventName("open_mods_menu")
+	f19_arg0.body.buttonList:addSpacer(CoD.CoD9Button.Height / 2, 8)
+	f19_arg0.body.optionsButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_OPTIONS_CAPS"), nil, 11)
+	f19_arg0.body.optionsButton.hintText = Engine.Localize("MPUI_OPTIONS_DESC")
+	f19_arg0.body.optionsButton:setActionEventName("open_options_menu")
+	if not CoD.isWIIU and Dvar.ui_inGameStoreVisible:get() == true and (CoD.isPS3 ~= true or CoD.isZombie ~= true) then
+		f19_arg0.body.ingameStoreButton = f19_arg0.body.buttonList:addButton(Engine.Localize("MENU_INGAMESTORE"), nil, 12)
+		if CoD.isPC then
+			f19_arg0.body.ingameStoreButton.hintText = Engine.Localize("PLATFORM_STORE_DESC")
+		else
+			f19_arg0.body.ingameStoreButton.hintText = Engine.Localize("MENU_STORE_DESC")
+		end
+		f19_arg0.body.ingameStoreButton:setActionEventName("open_store")
+	end
 end
 
 CoD.MainLobby.PopulateButtons_Zombie = function (MainLobbyButtonPane)
