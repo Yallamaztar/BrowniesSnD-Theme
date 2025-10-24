@@ -22,6 +22,9 @@ No .iwd mod required — just **drag and drop** or use the included installer:
      ```  
    - Keep the folder structure intact for proper functionality.
 
+---
+
+works with online (tested on brownies rrahhh 🦅) 
 
 ----
 
