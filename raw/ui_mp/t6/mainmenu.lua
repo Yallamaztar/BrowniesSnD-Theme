@@ -47,7 +47,7 @@ LUI.createMenu.MainMenu = function (LocalClientIndex)
 	modText:setAlpha(0.5)
 	MainMenuWidget:addElement(modText)
 
-	local fullText = Engine.Localize("^5zZzzZZzzzZZZz...")
+	local fullText = Engine.Localize("^5We Just Do It Better zZz...")
 	local currentIndex = 1
 	local typingSpeed = 210
 
