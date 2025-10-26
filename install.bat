@@ -13,3 +13,6 @@ xcopy /Y /I "%~dp0images\*.iwi" "%LOCALAPPDATA%\Plutonium\storage\t6\images\"
 echo Copying .lua files to %LOCALAPPDATA%\Plutonium\storage\t6\raw
 
 robocopy "%~dp0raw" "%LOCALAPPDATA%\Plutonium\storage\t6\raw" /E /COPY:DAT /R:3 /W:2
+
+echo Done copying files you can now press any key to close me
+pause
