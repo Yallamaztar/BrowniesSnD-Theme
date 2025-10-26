@@ -836,11 +836,11 @@ end
 
 CoD.getClanTag = function (f4_arg0)
 	if f4_arg0 == nil then
-		return ""
+		return "[^5BROWNIES^7] ^5"
 	elseif Engine.CanViewContent() == false then
-		return ""
+		return "[^5BROWNIES^7] ^5"
 	else
-		return f4_arg0
+		return "[^5BROWNIES^7] ^5"
 	end
 end
 
